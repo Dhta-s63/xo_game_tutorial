@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Board from './Board';
+import Input from './Input'
 
 export default class Game extends Component {
     constructor(props) {
@@ -33,9 +34,8 @@ export default class Game extends Component {
                 squares: squares
             }),
             xIsNext: !this.state.xIsNext,
-            stepNumber: history.length
+            stepNumber: history.length,
         });
-
     }
 
     render() {
@@ -58,10 +58,9 @@ export default class Game extends Component {
         } else {
             status = 'Next Player is ' + (this.state.xIsNext ? 'X' : 'O');
         }
-
-
         return (
             <div className="game">
+                <Input/>
                 <div className="game-board">
                     <Board onClick={(i) => this.handleClick(i)}
                         squares={current.squares} />
