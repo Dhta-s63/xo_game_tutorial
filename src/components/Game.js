@@ -5,6 +5,7 @@ export default class Game extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            disabled: false,
             size: '',
             xIsNext: true,
             stepNumber: 0,
@@ -47,6 +48,15 @@ export default class Game extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log(this.state.size)
+        this.setState({
+            disabled: true
+        })
+    }
+    handleCancel = (e) => {
+        this.setState({
+            disabled: false
+        })
+        e.preventDefault();
     }
 
     render() {
@@ -78,10 +88,17 @@ export default class Game extends Component {
                         type="number"
                         value = {this.state.size}
                         onChange={this.handleChange.bind(this)}
+                        disabled={this.state.disabled}
                     />
-                    <button type="submit">
-                        Submit
-                    </button>
+                    {!this.state.disabled ?
+                        <button type="submit" disabled={this.state.disabled}>
+                            Submit
+                        </button>
+                        :
+                        <button type="button" onClick={this.handleCancel}>
+                            Cancel
+                        </button>
+                    }
                     </form>
                 </div>
                 <div className="game-board">
@@ -101,10 +118,17 @@ export default class Game extends Component {
     }
 }
 //Let button have start value as null if fill with x then value = 1 or x , fill with o then value = 0 or o
-//check board at step n*2
-//check board row and column
-//check crosswise
-//check value to determine
+/*
+
+check board at step n*2
+check board row and column
+check crosswise
+check value to determine
+*/
+/*
+    Create function generate how to win from table size
+*/
+
 function calculateWinner(squares) {
     const lines = [
         [0, 1, 2],
