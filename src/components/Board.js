@@ -19,6 +19,7 @@ export default class Board extends Component {
             count++;
             table.push(<div className="border-row">{tableRow}</div>);
         }
+        console.log({table})
         return table;
     }
     render() {

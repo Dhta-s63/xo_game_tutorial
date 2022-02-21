@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Board from './Board';
-import Input from './Input'
 
 export default class Game extends Component {
     constructor(props) {
@@ -101,6 +100,7 @@ export default class Game extends Component {
         )
     }
 }
+//Let button have start value as null if fill with x then value = 1 or x , fill with o then value = 0 or o
 //check board at step n*2
 //check board row and column
 //check crosswise
