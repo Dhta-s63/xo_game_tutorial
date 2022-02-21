@@ -6,6 +6,7 @@ export default class Game extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            size: '',
             xIsNext: true,
             stepNumber: 0,
             history: [
@@ -37,6 +38,17 @@ export default class Game extends Component {
             stepNumber: history.length,
         });
     }
+    handleChange = (e) => {
+        this.setState({
+            size: e.target.value
+        })
+        e.preventDefault();
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state.size)
+    }
 
     render() {
         const history = this.state.history;
@@ -60,10 +72,25 @@ export default class Game extends Component {
         }
         return (
             <div className="game">
-                <Input/>
+                <div>
+                    <form onSubmit={this.handleSubmit.bind(this)}>
+                    <h4>Enter table size</h4>
+                    <input 
+                        type="number"
+                        value = {this.state.size}
+                        onChange={this.handleChange.bind(this)}
+                    />
+                    <button type="submit">
+                        Submit
+                    </button>
+                    </form>
+                </div>
                 <div className="game-board">
-                    <Board onClick={(i) => this.handleClick(i)}
-                        squares={current.squares} />
+                    <Board 
+                        onClick={(i) => this.handleClick(i)}
+                        squares={current.squares}
+                        table_size={this.state.size} 
+                    />
                 </div>
                 <div className="game-info">
                     <div>{status}</div>

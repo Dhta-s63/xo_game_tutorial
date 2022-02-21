@@ -1,31 +1,30 @@
 import React, { Component } from 'react';
 import Square from './Square';
-import Input from './Input';
 
 export default class Board extends Component {
-
     renderSquare(i){
         return <Square value={this.props.squares[i]}
         onClick={()=>this.props.onClick(i)}
         />
     }
-    Table(size){
+    Table(props){
         let table = [];
         let count = 0;
-        for(let i = 0; i < size; i++){
+        for(let i = 0; i < this.props.table_size; i++){
             let tableRow = [];
-            for(let j = 0; j < size; j++){
+            for(let j = 0; j < this.props.table_size; j++){
                 tableRow.push(this.renderSquare(count))
                 count++;
             }
             count++;
             table.push(<div className="border-row">{tableRow}</div>);
         }
+        return table;
     }
     render() {
         return (
             <div>
-                {this.Table}
+                {this.Table()}
             </div>
             /*
             <div>
