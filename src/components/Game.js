@@ -74,7 +74,10 @@ export default class Game extends Component {
         )
     }
 }
-
+//check board at step n*2
+//check board row and column
+//check crosswise
+//check value to determine
 function calculateWinner(squares) {
     const lines = [
         [0, 1, 2],

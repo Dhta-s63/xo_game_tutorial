@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Square from './Square';
+import Input from './Input';
 
 export default class Board extends Component {
 
@@ -8,8 +9,25 @@ export default class Board extends Component {
         onClick={()=>this.props.onClick(i)}
         />
     }
+    Table(size){
+        let table = [];
+        let count = 0;
+        for(let i = 0; i < size; i++){
+            let tableRow = [];
+            for(let j = 0; j < size; j++){
+                tableRow.push(this.renderSquare(count))
+                count++;
+            }
+            count++;
+            table.push(<div className="border-row">{tableRow}</div>);
+        }
+    }
     render() {
         return (
+            <div>
+                {this.Table}
+            </div>
+            /*
             <div>
                 <div className="border-row">
                     {this.renderSquare(0)}
@@ -28,6 +46,7 @@ export default class Board extends Component {
                 </div>
                 
             </div>
+            */
         )
     }
 }

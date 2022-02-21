@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
-    function FormSize(){
-        const [size, setSize] = useState("");
-        const handleSubmit = (e) => {
-            e.preventDefault();
-            console.log({size})
+  const Input = () => {
+    const [size, setSize] = useState("");
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log({size})
     }
     return (
       <form onSubmit = {handleSubmit}>
@@ -21,4 +21,4 @@ import React, { useState } from 'react'
     )
   }
 
-  export default FormSize;
+  export default Input;
